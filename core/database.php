@@ -99,7 +99,7 @@ class Database{
 		return $this->bStatus;
 		}	
 	
-	public function fetchAssocStmt($stmt, $buffer = true){
+	public function fetchAssocStmt(&$stmt, $buffer = true){
 		if($buffer){
 			$stmt->store_result();
 		}
@@ -111,7 +111,6 @@ class Database{
 		}
 		call_user_func_array(array($stmt, 'bind_result'), $args);
 		$results = array();
-		$i = 0;
 		while($stmt->fetch()){
 			$results[] = array_map("self::copyValue", $args);
 		}

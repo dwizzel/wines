@@ -19,7 +19,7 @@ class Request {
 	private function recursiveBuild($postdata, $arr){
 		foreach($postdata as $k=>$v){
 			if(is_array($v)){
-				$arr = recursiveBuildArray($v, $arr);
+				$arr = recursiveBuild($v, $arr);
 			}else{
 				$arr[$k] = $v;
 			}
